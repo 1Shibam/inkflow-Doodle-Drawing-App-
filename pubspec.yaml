@@ -87,6 +87,9 @@ flutter:
     - family: Super-Kinds
       fonts:
         - asset: assets/fonts/Super Kinds.ttf
+    - family: Hand-Doodle
+      fonts:
+        - asset: assets/fonts/HandDoodle.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
