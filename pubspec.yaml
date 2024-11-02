@@ -41,6 +41,9 @@ dependencies:
   firebase_core: ^3.6.0
   firebase_auth: ^5.3.1
   permission_handler: ^11.3.1
+  get: ^4.6.6
+  
+  
 
 dev_dependencies:
   flutter_test:
@@ -91,6 +94,15 @@ flutter:
     - family: Hand-Doodle
       fonts:
         - asset: assets/fonts/HandDoodle.ttf
+    - family: Bubble
+      fonts:
+        - asset: assets/fonts/Bubble3D.ttf
+    - family: Bubble-Italic
+      fonts:
+        - asset: assets/fonts/Bubble3D-Italic.ttf
+    - family: Digital
+      fonts:
+        - asset: assets/fonts/Digitalt.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

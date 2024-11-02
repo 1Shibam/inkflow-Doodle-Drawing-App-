@@ -6,6 +6,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+import 'package:inkflow/forgot_password.dart';
+import 'package:inkflow/signup_page.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -65,7 +67,7 @@ class _LoginState extends State<Login> {
                         child: Text(
                           'Welcome',
                           style: TextStyle(
-                              fontFamily: 'Hand-Doodle',
+                              fontFamily: 'Digital',
                               fontSize: 60,
                               fontWeight: FontWeight.bold),
                         ),
@@ -84,7 +86,8 @@ class _LoginState extends State<Login> {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(8.0),
                               border: Border.all(
-                                  color: Colors.black.withOpacity(0.7)),
+                                color: Colors.black.withOpacity(1),
+                              ),
                             ),
                             child: Row(
                               children: [
@@ -104,16 +107,15 @@ class _LoginState extends State<Login> {
                                       padding: const EdgeInsets.all(15.0),
                                       child: TextField(
                                         style: TextStyle(
-                                            fontFamily: 'hand-Doodle',
-                                            fontSize: 24,
-                                            fontWeight: FontWeight.bold),
+                                          fontFamily: 'Digital',
+                                          fontSize: 24,
+                                        ),
                                         controller: email,
                                         decoration: InputDecoration(
                                             hintText: 'Enter Your Email',
                                             hintStyle: TextStyle(
-                                                fontFamily: 'Hand-Doodle',
+                                                fontFamily: 'Digital',
                                                 fontSize: 24,
-                                                fontWeight: FontWeight.bold,
                                                 color: Colors.black
                                                     .withOpacity(0.3))),
                                       )),
@@ -131,7 +133,7 @@ class _LoginState extends State<Login> {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(8.0),
                               border: Border.all(
-                                  color: Colors.black.withOpacity(0.7)),
+                                  color: Colors.black.withOpacity(1)),
                             ),
                             child: Row(
                               children: [
@@ -151,16 +153,15 @@ class _LoginState extends State<Login> {
                                       padding: const EdgeInsets.all(15.0),
                                       child: TextField(
                                         style: TextStyle(
-                                            fontFamily: 'hand-Doodle',
-                                            fontSize: 24,
-                                            fontWeight: FontWeight.bold),
+                                          fontFamily: 'Digital',
+                                          fontSize: 24,
+                                        ),
                                         controller: password,
                                         decoration: InputDecoration(
                                             hintText: 'Enter Your Password',
                                             hintStyle: TextStyle(
-                                                fontFamily: 'Hand-Doodle',
+                                                fontFamily: 'Digital',
                                                 fontSize: 24,
-                                                fontWeight: FontWeight.bold,
                                                 color: Colors.black
                                                     .withOpacity(0.3))),
                                       )),
@@ -168,21 +169,74 @@ class _LoginState extends State<Login> {
                               ],
                             ),
                           ),
+                          SizedBox(
+                            height: 4,
+                          ),
                           Align(
                             alignment: Alignment.centerRight,
                             child: Padding(
-                              padding: const EdgeInsets.only(top: 4.0),
-                              child: Text(
-                                'Forgot Password?',
-                                style: TextStyle(
-                                    color: Colors.black.withOpacity(0.7),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold),
+                              padding: const EdgeInsets.only(top: 2.0),
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'New Here? ',
+                                      style: TextStyle(
+                                        fontFamily: 'Digital',
+                                        color: Colors.black.withOpacity(0.7),
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SignupPage()));
+                                      },
+                                      child: Text(
+                                        'Sign Up',
+                                        style: TextStyle(
+                                          fontFamily: 'Digital',
+                                          color: const Color.fromARGB(
+                                                  255, 0, 153, 255)
+                                              .withOpacity(0.7),
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 76,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ForgotPasswordPage()));
+                                      },
+                                      child: Text(
+                                        'Forgot Password?',
+                                        style: TextStyle(
+                                          fontFamily: 'Digital',
+                                          color: const Color.fromARGB(
+                                                  255, 0, 153, 255)
+                                              .withOpacity(0.7),
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                           SizedBox(
-                            height: 8,
+                            height: 16,
                           ),
                           Container(
                             height: 48,
@@ -201,27 +255,41 @@ class _LoginState extends State<Login> {
                               child: const Text(
                                 'Sign-In',
                                 style: TextStyle(
-                                    fontFamily: 'Hand-Doodle',
+                                    fontFamily: 'Digital',
                                     fontSize: 24,
-                                    fontWeight: FontWeight.bold,
                                     color: Colors.black),
                               ),
                             ),
                           ),
                           SizedBox(
-                            width: double.infinity,
-                            height: 48,
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                'OR',
-                                style: TextStyle(
-                                    fontFamily: 'Hand-Doodle',
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
+                            height: 8,
                           ),
+                          Row(
+                            children: const [
+                              Expanded(
+                                child: Divider(
+                                  color: Colors.black,
+                                  thickness: 1,
+                                  endIndent: 10,
+                                ),
+                              ),
+                              Text(
+                                "Or Continue with",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Digital',
+                                  fontSize: 20,
+                                ),
+                              ),
+                              Expanded(
+                                child: Divider(
+                                  color: Colors.black,
+                                  thickness: 1,
+                                  indent: 10,
+                                ),
+                              ),
+                            ],
+                          )
                         ],
                       ),
                     ),
