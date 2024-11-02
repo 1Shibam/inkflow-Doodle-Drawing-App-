@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously, unused_import
+// ignore_for_file: use_build_context_synchronously, unused_import, unnecessary_import, avoid_unnecessary_containers
 
 import 'dart:ffi';
 import 'dart:ui';
@@ -35,121 +35,171 @@ class _LoginState extends State<Login> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            ImageFiltered(
-              imageFilter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-              child: Opacity(
-                opacity: 0.6,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Image.asset(
-                    'assets/images/background.png',
-                    fit: BoxFit.fill, // Cover the entire screen
-                  ),
-                ),
+        child: Align(
+          alignment: Alignment.center,
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
               ),
-            ),
-            Column(
-              children: [
-                SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 24,
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        'assets/images/cat animation.gif',
+                        width: 160,
+                        height: 160,
                       ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Image.asset(
-                          'assets/images/cat animation.gif',
-                          width: 120,
-                          height: 120,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 28, vertical: 10),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
                         child: Text(
-                          'Welcome to Inkflow Login before you continue...',
+                          'Welcome',
                           style: TextStyle(
                               fontFamily: 'Hand-Doodle',
-                              fontSize: 32,
+                              fontSize: 60,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: 60,
-                              width: 400,
-                              decoration: BoxDecoration(
-                                  color: Colors.blue.withOpacity(0.6),
-                                  borderRadius: BorderRadius.circular(16)),
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16),
-                                  child: TextField(
-                                    controller: email,
-                                    decoration: const InputDecoration(
-                                      hintText: 'Enter your Email',
-                                      fillColor:
-                                          Color.fromARGB(255, 0, 140, 255),
-                                      hintStyle: TextStyle(
-                                          fontFamily: 'Hand-Doodle',
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.bold),
-                                      alignLabelWithHint: true,
-                                    ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            height: 80,
+                            padding: EdgeInsets.symmetric(horizontal: 8.0),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(
+                                  color: Colors.black.withOpacity(0.7)),
+                            ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.circular(4.0),
+                                  ),
+                                  child: Icon(
+                                    Icons.email,
+                                    color: Colors.white,
                                   ),
                                 ),
-                              ),
+                                Expanded(
+                                  child: Padding(
+                                      padding: const EdgeInsets.all(15.0),
+                                      child: TextField(
+                                        style: TextStyle(
+                                            fontFamily: 'hand-Doodle',
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.bold),
+                                        controller: email,
+                                        decoration: InputDecoration(
+                                            hintText: 'Enter Your Email',
+                                            hintStyle: TextStyle(
+                                                fontFamily: 'Hand-Doodle',
+                                                fontSize: 24,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black
+                                                    .withOpacity(0.3))),
+                                      )),
+                                ),
+                              ],
                             ),
-                            const SizedBox(
-                              height: 12,
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Container(
+                            height: 80,
+                            padding: EdgeInsets.symmetric(horizontal: 8.0),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8.0),
+                              border: Border.all(
+                                  color: Colors.black.withOpacity(0.7)),
                             ),
-                            Container(
-                              height: 60,
-                              width: 400,
-                              decoration: BoxDecoration(
-                                  color: Colors.blue.withOpacity(0.6),
-                                  borderRadius: BorderRadius.circular(16)),
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16),
-                                  child: TextField(
-                                    controller: password,
-                                    decoration: const InputDecoration(
-                                      hintText: 'Enter your password',
-                                      fillColor:
-                                          Color.fromARGB(255, 0, 140, 255),
-                                      hintStyle: TextStyle(
-                                          fontFamily: 'Hand-Doodle',
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.bold),
-                                      alignLabelWithHint: true,
-                                    ),
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(10.0),
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.circular(4.0),
+                                  ),
+                                  child: Icon(
+                                    Icons.lock,
+                                    color: Colors.white,
                                   ),
                                 ),
+                                Expanded(
+                                  child: Padding(
+                                      padding: const EdgeInsets.all(15.0),
+                                      child: TextField(
+                                        style: TextStyle(
+                                            fontFamily: 'hand-Doodle',
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.bold),
+                                        controller: password,
+                                        decoration: InputDecoration(
+                                            hintText: 'Enter Your Password',
+                                            hintStyle: TextStyle(
+                                                fontFamily: 'Hand-Doodle',
+                                                fontSize: 24,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black
+                                                    .withOpacity(0.3))),
+                                      )),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 4.0),
+                              child: Text(
+                                'Forgot Password?',
+                                style: TextStyle(
+                                    color: Colors.black.withOpacity(0.7),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
-                            const SizedBox(
-                              height: 12,
-                            ),
-                            ElevatedButton(
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Container(
+                            height: 48,
+                            width: 160,
+                            decoration: BoxDecoration(
+                                color: Colors.blue,
+                                border: Border(),
+                                borderRadius: BorderRadius.circular(16)),
+                            child: ElevatedButton(
                               onPressed: signIn,
+                              style: ButtonStyle(
+                                  backgroundColor: WidgetStatePropertyAll(
+                                      Colors.transparent),
+                                  shadowColor: WidgetStatePropertyAll(
+                                      Colors.transparent)),
                               child: const Text(
-                                'Login',
+                                'Sign-In',
                                 style: TextStyle(
                                     fontFamily: 'Hand-Doodle',
                                     fontSize: 24,
@@ -157,63 +207,29 @@ class _LoginState extends State<Login> {
                                     color: Colors.black),
                               ),
                             ),
-                            const SizedBox(
-                              height: 4,
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(top: 4),
-                              child: SizedBox(
-                                width: double.infinity,
-                                height: 60,
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    'OR',
-                                    style: TextStyle(
-                                        fontFamily: 'Hand-Doodle',
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Align(
+                          ),
+                          SizedBox(
+                            width: double.infinity,
+                            height: 48,
+                            child: Align(
                               alignment: Alignment.center,
-                              child: const Row(
-                                children: [
-                                  Text(
-                                    'Sign Up',
-                                    style: TextStyle(
-                                        fontSize: 24,
-                                        fontFamily: 'Hand-Doodle',
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    ' | ',
-                                    style: TextStyle(
-                                        fontSize: 24,
-                                        fontFamily: 'Hand-Doodle',
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    'forgot password?',
-                                    style: TextStyle(
-                                        fontSize: 24,
-                                        fontFamily: 'Hand-Doodle',
-                                        fontWeight: FontWeight.bold),
-                                  )
-                                ],
+                              child: Text(
+                                'OR',
+                                style: TextStyle(
+                                    fontFamily: 'Hand-Doodle',
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.bold),
                               ),
-                            )
-                          ],
-                        ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
