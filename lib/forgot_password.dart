@@ -28,7 +28,10 @@ class ForgotPasswordPage extends StatelessWidget {
                 labelText: "Enter your email",
                 hintText: "e.g. example@domain.com",
                 border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.email),
+                prefixIcon: Icon(
+                  Icons.email,
+                  color: Colors.blue,
+                ),
               ),
               keyboardType: TextInputType.emailAddress,
             ),

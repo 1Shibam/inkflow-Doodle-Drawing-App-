@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});
@@ -103,22 +104,66 @@ class SignupPage extends StatelessWidget {
               obscureText: true,
             ),
             SizedBox(height: 28),
-
-            // Submit Button
             ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(Colors.blue)),
+              style: ElevatedButton.styleFrom(
+                minimumSize: Size(100, 50), // Set width and height here
+                backgroundColor: Colors.blue, // Set the background color
+              ),
               onPressed: () {
                 // Handle the submit action
               },
               child: Text(
                 "Sign Up",
                 style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black),
+                  fontFamily: 'Digital',
+                  fontSize: 24,
+                  color: Colors.black,
+                ),
               ),
             ),
+
+            // Submit Button
+
+            SizedBox(
+              height: 16,
+            ),
+            Row(
+              children: const [
+                Expanded(
+                  child: Divider(
+                    color: Colors.black,
+                    thickness: 1,
+                    endIndent: 10,
+                  ),
+                ),
+                Text(
+                  "Or Continue with",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontFamily: 'Digital',
+                    fontSize: 20,
+                  ),
+                ),
+                Expanded(
+                  child: Divider(
+                    color: Colors.black,
+                    thickness: 1,
+                    indent: 10,
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  IconButton(
+                      onPressed: () {},
+                      icon: SvgPicture.asset('assets/images/google.svg'))
+                ],
+              ),
+            )
           ],
         ),
       ),

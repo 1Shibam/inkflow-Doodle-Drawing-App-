@@ -5,6 +5,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:inkflow/forgot_password.dart';
 import 'package:inkflow/signup_page.dart';
@@ -273,6 +274,9 @@ class _LoginState extends State<Login> {
                                   endIndent: 10,
                                 ),
                               ),
+                              SizedBox(
+                                height: 40,
+                              ),
                               Text(
                                 "Or Continue with",
                                 style: TextStyle(
@@ -289,6 +293,18 @@ class _LoginState extends State<Login> {
                                 ),
                               ),
                             ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: SvgPicture.asset(
+                                        'assets/images/google.svg'))
+                              ],
+                            ),
                           )
                         ],
                       ),
