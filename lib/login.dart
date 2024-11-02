@@ -210,7 +210,7 @@ class _LoginState extends State<Login> {
                                       ),
                                     ),
                                     SizedBox(
-                                      width: 76,
+                                      width: 100,
                                     ),
                                     GestureDetector(
                                       onTap: () {

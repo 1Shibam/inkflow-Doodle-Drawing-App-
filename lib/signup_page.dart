@@ -39,6 +39,8 @@ class SignupPage extends StatelessWidget {
                     fontFamily: 'Digital',
                     fontSize: 20,
                     color: Colors.black.withOpacity(0.5)),
+                hintText: 'e.g. Pookie..',
+                hintStyle: TextStyle(color: Colors.black.withOpacity(0.5)),
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(
                   Icons.person,
@@ -76,6 +78,8 @@ class SignupPage extends StatelessWidget {
                     fontFamily: 'Digital',
                     fontSize: 20,
                     color: Colors.black.withOpacity(0.5)),
+                hintText: 'e.g. pookierbear@example.com',
+                hintStyle: TextStyle(color: Colors.black.withOpacity(0.5)),
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(
                   Icons.email,

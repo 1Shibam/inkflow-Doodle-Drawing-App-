@@ -7,26 +7,44 @@ class ForgotPasswordPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Forgot Password"),
+        title: Text(
+          "Forgot Password",
+          style: TextStyle(
+              fontFamily: 'Digital', fontWeight: FontWeight.bold, fontSize: 24),
+        ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0).copyWith(top: 40),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               "Reset Your Password",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontFamily: 'Digital',
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 40),
 
-            // Email TextField
             TextField(
+              style: TextStyle(
+                  fontFamily: 'Digital',
+                  fontSize: 20,
+                  color: Colors.black.withOpacity(1)),
               decoration: InputDecoration(
                 labelText: "Enter your email",
+                labelStyle: TextStyle(
+                    fontFamily: 'Digital',
+                    fontSize: 20,
+                    color: Colors.black.withOpacity(0.5)),
                 hintText: "e.g. example@domain.com",
+                hintStyle: TextStyle(
+                    fontFamily: 'Digital',
+                    fontSize: 20,
+                    color: Colors.black.withOpacity(0.5)),
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(
                   Icons.email,
@@ -39,21 +57,30 @@ class ForgotPasswordPage extends StatelessWidget {
 
             // Reset Password Button
             ElevatedButton(
-              onPressed: () {
-                // Handle the reset password action
-                // You could navigate back or show a success message here
-              },
-              child: Text("Reset Password"),
+              style: ButtonStyle(
+                  backgroundColor: WidgetStatePropertyAll(Colors.blue)),
+              onPressed: () {},
+              child: Text(
+                "Send Reset Link",
+                style: TextStyle(
+                    fontFamily: 'Digital',
+                    fontSize: 20,
+                    color: Colors.black.withOpacity(1)),
+              ),
             ),
 
             // Back to Login link
             TextButton(
               onPressed: () {
-                // Handle back to login action
-                Navigator.pop(
-                    context); // For demonstration; navigate back to previous page
+                Navigator.pop(context); //
               },
-              child: Text("Back to Login"),
+              child: Text(
+                "Back to Login",
+                style: TextStyle(
+                    fontFamily: 'Digital',
+                    fontSize: 16,
+                    color: Colors.blue.withOpacity(1)),
+              ),
             ),
           ],
         ),
