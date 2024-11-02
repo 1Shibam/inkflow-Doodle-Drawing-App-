@@ -34,18 +34,6 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor:
-            const Color.fromARGB(255, 0, 140, 255).withOpacity(0.4),
-        title: const Text(
-          'Login-Page',
-          style: TextStyle(
-              fontFamily: 'Hand-Doodle',
-              fontSize: 40,
-              fontWeight: FontWeight.bold),
-        ),
-      ),
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -160,10 +148,6 @@ class _LoginState extends State<Login> {
                             ),
                             ElevatedButton(
                               onPressed: signIn,
-                              style: ElevatedButton.styleFrom(
-                                minimumSize: const Size(
-                                    100, 40), // Width: 200, Height: 60
-                              ), // Call signIn directly
                               child: const Text(
                                 'Login',
                                 style: TextStyle(
