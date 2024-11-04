@@ -1,8 +1,26 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:inkflow/wrapper.dart';
 
-class SignupPage extends StatelessWidget {
+class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
+
+  @override
+  State<SignupPage> createState() => _SignupPageState();
+}
+
+class _SignupPageState extends State<SignupPage> {
+  TextEditingController myEmail = TextEditingController();
+  TextEditingController myPassword = TextEditingController();
+
+  signup() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: myEmail.text, password: myPassword.text);
+    Get.offAll(Wrapper());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,9 +131,7 @@ class SignupPage extends StatelessWidget {
                 minimumSize: Size(100, 50), // Set width and height here
                 backgroundColor: Colors.blue, // Set the background color
               ),
-              onPressed: () {
-                // Handle the submit action
-              },
+              onPressed: (() => signup()),
               child: Text(
                 "Sign Up",
                 style: TextStyle(

@@ -2,6 +2,7 @@
 
 import 'dart:ffi';
 import 'dart:ui';
+import 'loader.dart';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -192,11 +193,8 @@ class _LoginState extends State<Login> {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    SignupPage()));
+                                        myDialog.myLoader(context, SignupPage(),
+                                            'assets/images/loaderAnimation.gif');
                                       },
                                       child: Text(
                                         'Sign Up',
@@ -214,11 +212,10 @@ class _LoginState extends State<Login> {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        Navigator.push(
+                                        myDialog.myLoader(
                                             context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ForgotPasswordPage()));
+                                            ForgotPasswordPage(),
+                                            'assets/images/loaderAnimation.gif');
                                       },
                                       child: Text(
                                         'Forgot Password?',
