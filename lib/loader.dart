@@ -50,7 +50,7 @@ class myDialog {
             ),
           );
         },
-        barrierColor: Colors.white.withOpacity(0.8));
+        barrierColor: Colors.white.withOpacity(1));
 
     // Wait for 1 second
     await Future.delayed(Duration(milliseconds: 500));

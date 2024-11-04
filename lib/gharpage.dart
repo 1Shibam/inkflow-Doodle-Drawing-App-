@@ -14,7 +14,6 @@ class _GharpageState extends State<Gharpage> {
   @override
   void initState() {
     super.initState();
-    // Request permission on app start, or call when needed
     requestStoragePermission(context);
   }
 

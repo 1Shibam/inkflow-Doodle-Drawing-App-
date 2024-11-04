@@ -1,7 +1,9 @@
-// ignore_for_file: use_build_context_synchronously, unused_import, unnecessary_import, avoid_unnecessary_containers
+// ignore_for_file: use_build_context_synchronously, unused_import, unnecessary_import, avoid_unnecessary_containers, unused_field, prefer_final_fields
 
 import 'dart:ffi';
 import 'dart:ui';
+import 'package:flutter/rendering.dart';
+
 import 'loader.dart';
 
 import 'package:flutter/material.dart';
@@ -19,24 +21,43 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool _isPasswordVisible = false;
+  final _emailController = TextEditingController();
+  final _passController = TextEditingController();
+
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
   // Sign in function with error handling
-  signIn() async {
+  Future signIn() async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: email.text, password: password.text);
+          email: email.text.trim(), password: password.text.trim());
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Login failed: ${e.toString()}")),
+        SnackBar(
+          content: Text(
+            "Login failed, Please enter correctly!",
+          ),
+          action: SnackBarAction(label: 'okay', onPressed: () {}),
+        ),
       );
     }
   }
 
   @override
+  void dispose() {
+    email.dispose();
+    _emailController.dispose();
+    password.dispose();
+    _passController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: Align(
@@ -154,12 +175,26 @@ class _LoginState extends State<Login> {
                                   child: Padding(
                                       padding: const EdgeInsets.all(15.0),
                                       child: TextField(
+                                        obscureText: _isPasswordVisible,
                                         style: TextStyle(
                                           fontFamily: 'Digital',
                                           fontSize: 24,
                                         ),
                                         controller: password,
                                         decoration: InputDecoration(
+                                            suffixIcon: IconButton(
+                                              icon: Icon(
+                                                _isPasswordVisible
+                                                    ? Icons.visibility_off
+                                                    : Icons.visibility,
+                                              ),
+                                              onPressed: () {
+                                                setState(() {
+                                                  _isPasswordVisible =
+                                                      !_isPasswordVisible;
+                                                });
+                                              },
+                                            ),
                                             hintText: 'Enter Your Password',
                                             hintStyle: TextStyle(
                                                 fontFamily: 'Digital',
