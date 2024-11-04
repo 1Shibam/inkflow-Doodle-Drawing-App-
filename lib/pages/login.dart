@@ -4,14 +4,14 @@ import 'dart:ffi';
 import 'dart:ui';
 import 'package:flutter/rendering.dart';
 
-import 'loader.dart';
+import '../methods/loader.dart';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
-import 'package:inkflow/forgot_password.dart';
-import 'package:inkflow/signup_page.dart';
+import 'package:inkflow/pages/forgot_password.dart';
+import 'package:inkflow/pages/signup_page.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});

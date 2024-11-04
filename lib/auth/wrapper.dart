@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:inkflow/gharpage.dart';
-import 'package:inkflow/login.dart';
+import 'package:inkflow/pages/gharpage.dart';
+import 'package:inkflow/pages/login.dart';
 
 class Wrapper extends StatefulWidget {
   const Wrapper({super.key});

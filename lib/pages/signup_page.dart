@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:inkflow/wrapper.dart';
+import 'package:inkflow/auth/wrapper.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -86,6 +86,25 @@ class _SignupPageState extends State<SignupPage> {
                 style: TextStyle(fontFamily: 'Digital', fontSize: 20),
                 decoration: InputDecoration(
                   labelText: "Password",
+                  labelStyle: TextStyle(
+                      fontFamily: 'Digital',
+                      fontSize: 20,
+                      color: Colors.black.withOpacity(0.5)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  prefixIcon: Icon(
+                    Icons.lock,
+                    color: Colors.blue,
+                  ),
+                ),
+                obscureText: true,
+              ),
+              SizedBox(height: 28),
+              TextField(
+                controller: myPassword,
+                style: TextStyle(fontFamily: 'Digital', fontSize: 20),
+                decoration: InputDecoration(
+                  labelText: "Confirm Password",
                   labelStyle: TextStyle(
                       fontFamily: 'Digital',
                       fontSize: 20,

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
-import 'snackbar.dart';
+import 'methods/snackbar.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
