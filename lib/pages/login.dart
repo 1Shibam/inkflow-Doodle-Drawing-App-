@@ -1,4 +1,4 @@
-// ignore_for_file: use_build_context_synchronously, unused_import, unnecessary_import, avoid_unnecessary_containers, unused_field, prefer_final_fields
+// ignore_for_file: use_build_context_synchronously, unused_import, unnecessary_import, avoid_unnecessary_containers, unused_field, prefer_final_fields, camel_case_types
 
 import 'dart:ffi';
 import 'dart:ui';
@@ -22,17 +22,15 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool _isPasswordVisible = false;
-  final _emailController = TextEditingController();
-  final _passController = TextEditingController();
 
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
+  final _email = TextEditingController();
+  final _password = TextEditingController();
 
   // Sign in function with error handling
   Future signIn() async {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: email.text.trim(), password: password.text.trim());
+          email: _email.text.trim(), password: _password.text.trim());
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -47,10 +45,10 @@ class _LoginState extends State<Login> {
 
   @override
   void dispose() {
-    email.dispose();
-    _emailController.dispose();
-    password.dispose();
-    _passController.dispose();
+    _email.dispose();
+
+    _password.dispose();
+
     super.dispose();
   }
 
@@ -90,7 +88,7 @@ class _LoginState extends State<Login> {
                         child: Text(
                           'Welcome',
                           style: TextStyle(
-                              fontFamily: 'Digital',
+                              fontFamily: 'Technoma',
                               fontSize: 60,
                               fontWeight: FontWeight.bold),
                         ),
@@ -130,14 +128,14 @@ class _LoginState extends State<Login> {
                                       padding: const EdgeInsets.all(15.0),
                                       child: TextField(
                                         style: TextStyle(
-                                          fontFamily: 'Digital',
+                                          fontFamily: 'Technoma',
                                           fontSize: 24,
                                         ),
-                                        controller: email,
+                                        controller: _email,
                                         decoration: InputDecoration(
                                             hintText: 'Enter Your Email',
                                             hintStyle: TextStyle(
-                                                fontFamily: 'Digital',
+                                                fontFamily: 'Technoma',
                                                 fontSize: 24,
                                                 color: Colors.black
                                                     .withOpacity(0.3))),
@@ -177,16 +175,16 @@ class _LoginState extends State<Login> {
                                       child: TextField(
                                         obscureText: _isPasswordVisible,
                                         style: TextStyle(
-                                          fontFamily: 'Digital',
+                                          fontFamily: 'Technoma',
                                           fontSize: 24,
                                         ),
-                                        controller: password,
+                                        controller: _password,
                                         decoration: InputDecoration(
                                             suffixIcon: IconButton(
                                               icon: Icon(
                                                 _isPasswordVisible
-                                                    ? Icons.visibility_off
-                                                    : Icons.visibility,
+                                                    ? Icons.visibility
+                                                    : Icons.visibility_off,
                                               ),
                                               onPressed: () {
                                                 setState(() {
@@ -197,7 +195,7 @@ class _LoginState extends State<Login> {
                                             ),
                                             hintText: 'Enter Your Password',
                                             hintStyle: TextStyle(
-                                                fontFamily: 'Digital',
+                                                fontFamily: 'Technoma',
                                                 fontSize: 24,
                                                 color: Colors.black
                                                     .withOpacity(0.3))),
@@ -221,7 +219,7 @@ class _LoginState extends State<Login> {
                                     Text(
                                       'New Here? ',
                                       style: TextStyle(
-                                        fontFamily: 'Digital',
+                                        fontFamily: 'Technoma',
                                         color: Colors.black.withOpacity(0.7),
                                         fontSize: 16,
                                       ),
@@ -234,7 +232,7 @@ class _LoginState extends State<Login> {
                                       child: Text(
                                         'Sign Up',
                                         style: TextStyle(
-                                          fontFamily: 'Digital',
+                                          fontFamily: 'Technoma',
                                           color: const Color.fromARGB(
                                                   255, 0, 153, 255)
                                               .withOpacity(0.7),
@@ -255,7 +253,7 @@ class _LoginState extends State<Login> {
                                       child: Text(
                                         'Forgot Password?',
                                         style: TextStyle(
-                                          fontFamily: 'Digital',
+                                          fontFamily: 'Technoma',
                                           color: const Color.fromARGB(
                                                   255, 0, 153, 255)
                                               .withOpacity(0.7),
@@ -288,7 +286,7 @@ class _LoginState extends State<Login> {
                               child: const Text(
                                 'Sign-In',
                                 style: TextStyle(
-                                    fontFamily: 'Digital',
+                                    fontFamily: 'Technoma',
                                     fontSize: 24,
                                     color: Colors.black),
                               ),
@@ -313,7 +311,7 @@ class _LoginState extends State<Login> {
                                 "Or Continue with",
                                 style: TextStyle(
                                   color: Colors.black,
-                                  fontFamily: 'Digital',
+                                  fontFamily: 'Technoma',
                                   fontSize: 20,
                                 ),
                               ),

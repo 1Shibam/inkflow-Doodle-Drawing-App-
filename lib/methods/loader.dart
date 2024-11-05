@@ -37,9 +37,8 @@ class myDialog {
         builder: (BuildContext dialogContext) {
           return Center(
             child: Dialog(
-              backgroundColor:
-                  Colors.transparent, // Make background transparent
-              insetPadding: EdgeInsets.zero, // Remove padding around dialog
+              backgroundColor: Colors.transparent,
+              insetPadding: EdgeInsets.zero,
               child: SizedBox.expand(
                 child: Loader(
                   gifPath: gifPath,

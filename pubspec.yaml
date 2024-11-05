@@ -104,6 +104,9 @@ flutter:
     - family: Digital
       fonts:
         - asset: assets/fonts/Digitalt.ttf
+    - family: Technoma
+      fonts:
+        - asset: assets/fonts/Technoma.otf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

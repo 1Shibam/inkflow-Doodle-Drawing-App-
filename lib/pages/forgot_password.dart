@@ -1,7 +1,36 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
+class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
+
+  @override
+  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
+}
+
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+  final _email = TextEditingController();
+  @override
+  void dispose() {
+    _email.dispose();
+    super.dispose();
+  }
+
+  Future passwordReset() async {
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: _email.text.trim());
+    } on FirebaseAuthException catch (e) {
+      // showMyScaffold(context, e.toString());
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text(e.message.toString()),
+            );
+          });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +39,9 @@ class ForgotPasswordPage extends StatelessWidget {
         title: Text(
           "Forgot Password",
           style: TextStyle(
-              fontFamily: 'Digital', fontWeight: FontWeight.bold, fontSize: 24),
+              fontFamily: 'Technoma',
+              fontWeight: FontWeight.bold,
+              fontSize: 24),
         ),
       ),
       body: Padding(
@@ -22,7 +53,7 @@ class ForgotPasswordPage extends StatelessWidget {
             Text(
               "Reset Your Password",
               style: TextStyle(
-                  fontFamily: 'Digital',
+                  fontFamily: 'Technoma',
                   fontSize: 32,
                   fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
@@ -30,19 +61,20 @@ class ForgotPasswordPage extends StatelessWidget {
             SizedBox(height: 40),
 
             TextField(
+              controller: _email,
               style: TextStyle(
-                  fontFamily: 'Digital',
+                  fontFamily: 'Technoma',
                   fontSize: 20,
                   color: Colors.black.withOpacity(1)),
               decoration: InputDecoration(
                 labelText: "Enter your email",
                 labelStyle: TextStyle(
-                    fontFamily: 'Digital',
+                    fontFamily: 'Technoma',
                     fontSize: 20,
                     color: Colors.black.withOpacity(0.5)),
                 hintText: "e.g. example@domain.com",
                 hintStyle: TextStyle(
-                    fontFamily: 'Digital',
+                    fontFamily: 'Technoma',
                     fontSize: 20,
                     color: Colors.black.withOpacity(0.5)),
                 border: OutlineInputBorder(),
@@ -59,11 +91,13 @@ class ForgotPasswordPage extends StatelessWidget {
             ElevatedButton(
               style: ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(Colors.blue)),
-              onPressed: () {},
+              onPressed: () {
+                passwordReset();
+              },
               child: Text(
                 "Send Reset Link",
                 style: TextStyle(
-                    fontFamily: 'Digital',
+                    fontFamily: 'Technoma',
                     fontSize: 20,
                     color: Colors.black.withOpacity(1)),
               ),
@@ -77,7 +111,7 @@ class ForgotPasswordPage extends StatelessWidget {
               child: Text(
                 "Back to Login",
                 style: TextStyle(
-                    fontFamily: 'Digital',
+                    fontFamily: 'Technoma',
                     fontSize: 16,
                     color: Colors.blue.withOpacity(1)),
               ),
