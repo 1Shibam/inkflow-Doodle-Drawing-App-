@@ -5,8 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:inkflow/auth/wrapper.dart';
 
-import 'package:inkflow/read_data/get_user_name.dart';
-
 class Gharpage extends StatefulWidget {
   const Gharpage({super.key});
 
@@ -53,21 +51,6 @@ class _GharpageState extends State<Gharpage> {
               child: user != null
                   ? Text('Welcome, ${user!.email}')
                   : Text('No user information available.'),
-            ),
-            Expanded(
-              child: FutureBuilder(
-                future: documentIds.isEmpty ? getUserId() : null,
-                builder: (context, snapshot) {
-                  return ListView.builder(
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: GetUserName(documentId: documentIds[index]),
-                      );
-                    },
-                    itemCount: documentIds.length,
-                  );
-                },
-              ),
             ),
           ],
         ),
