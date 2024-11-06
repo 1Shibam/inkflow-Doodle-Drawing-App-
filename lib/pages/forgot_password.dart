@@ -9,24 +9,45 @@ class ForgotPasswordPage extends StatefulWidget {
 }
 
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
-  final _email = TextEditingController();
+  final _emailControl = TextEditingController();
   @override
   void dispose() {
-    _email.dispose();
+    _emailControl.dispose();
     super.dispose();
   }
 
   Future passwordReset() async {
     try {
       await FirebaseAuth.instance
-          .sendPasswordResetEmail(email: _email.text.trim());
+          .sendPasswordResetEmail(email: _emailControl.text.trim());
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text(
+                'Password Reset Link Sent to your email, Please check!',
+                style: TextStyle(fontFamily: 'Technoma'),
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(0),
+                // Set the radius here
+              ),
+            );
+          });
     } on FirebaseAuthException catch (e) {
       // showMyScaffold(context, e.toString());
       showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
-              content: Text(e.message.toString()),
+              content: Text(
+                e.message.toString(),
+                style: TextStyle(fontFamily: 'Technoma'),
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(0),
+                // Set the radius here
+              ),
             );
           });
     }
@@ -61,7 +82,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             SizedBox(height: 40),
 
             TextField(
-              controller: _email,
+              controller: _emailControl,
               style: TextStyle(
                   fontFamily: 'Technoma',
                   fontSize: 20,
@@ -91,9 +112,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             ElevatedButton(
               style: ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(Colors.blue)),
-              onPressed: () {
-                passwordReset();
-              },
+              onPressed: passwordReset,
               child: Text(
                 "Send Reset Link",
                 style: TextStyle(

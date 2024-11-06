@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_final_fields, unused_field
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -20,6 +21,8 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController myEmail = TextEditingController();
   TextEditingController myPassword = TextEditingController();
   TextEditingController confirmMyPassword = TextEditingController();
+  TextEditingController yourName = TextEditingController();
+  TextEditingController yourAge = TextEditingController();
 
   @override
   void dispose() {
@@ -28,15 +31,29 @@ class _SignupPageState extends State<SignupPage> {
     myEmail.dispose();
     myPassword.dispose();
     confirmMyPassword.dispose();
+    yourAge.dispose();
+    yourName.dispose();
     super.dispose();
   }
 
   Future signup() async {
     if (passConfirmation()) {
+      //Create User
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: myEmail.text.trim(), password: myPassword.text.trim());
       Get.offAll(Wrapper());
     }
+    //Add User Details
+    addUserDetails(
+        yourName.text.trim(), int.parse(yourAge.text.trim()), myEmail.text);
+  }
+
+  Future addUserDetails(String name, int age, String email) async {
+    await FirebaseFirestore.instance.collection('Users').add({
+      'name': name,
+      'Age': age,
+      'email': email,
+    });
   }
 
   bool passConfirmation() {
@@ -81,11 +98,51 @@ class _SignupPageState extends State<SignupPage> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 12),
 
               // Name TextField
 
               // Email TextField
+              TextField(
+                controller: yourName,
+                style: TextStyle(fontFamily: 'Technoma', fontSize: 20),
+                decoration: InputDecoration(
+                  labelText: "Your Name",
+                  labelStyle: TextStyle(
+                      fontFamily: 'Technoma',
+                      fontSize: 20,
+                      color: Colors.black.withOpacity(0.5)),
+                  hintText: 'e.g., Mukesh Gutka',
+                  hintStyle: TextStyle(color: Colors.black.withOpacity(0.5)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  prefixIcon: Icon(
+                    Icons.email,
+                    color: Colors.blue,
+                  ),
+                ),
+              ),
+              SizedBox(height: 8),
+              TextField(
+                controller: yourAge,
+                style: TextStyle(fontFamily: 'Technoma', fontSize: 20),
+                decoration: InputDecoration(
+                  labelText: "Your Age",
+                  labelStyle: TextStyle(
+                      fontFamily: 'Technoma',
+                      fontSize: 20,
+                      color: Colors.black.withOpacity(0.5)),
+                  hintStyle: TextStyle(color: Colors.black.withOpacity(0.5)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  prefixIcon: Icon(
+                    Icons.email,
+                    color: Colors.blue,
+                  ),
+                ),
+                keyboardType: TextInputType.number,
+              ),
+              SizedBox(height: 8),
               TextField(
                 controller: myEmail,
                 style: TextStyle(fontFamily: 'Technoma', fontSize: 20),
@@ -104,9 +161,8 @@ class _SignupPageState extends State<SignupPage> {
                     color: Colors.blue,
                   ),
                 ),
-                keyboardType: TextInputType.emailAddress,
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 8),
 
               // Password TextField
               TextField(
@@ -136,7 +192,7 @@ class _SignupPageState extends State<SignupPage> {
                 ),
                 obscureText: !_isVisible,
               ),
-              SizedBox(height: 28),
+              SizedBox(height: 8),
               TextField(
                 controller: confirmMyPassword,
                 style: TextStyle(fontFamily: 'Technoma', fontSize: 20),
