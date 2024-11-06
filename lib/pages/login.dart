@@ -3,6 +3,7 @@
 import 'dart:ffi';
 import 'dart:ui';
 import 'package:flutter/rendering.dart';
+import 'package:inkflow/pages/gharpage.dart';
 
 import '../methods/loader.dart';
 
@@ -173,7 +174,7 @@ class _LoginState extends State<Login> {
                                   child: Padding(
                                       padding: const EdgeInsets.all(15.0),
                                       child: TextField(
-                                        obscureText: _isPasswordVisible,
+                                        obscureText: !_isPasswordVisible,
                                         style: TextStyle(
                                           fontFamily: 'Technoma',
                                           fontSize: 24,

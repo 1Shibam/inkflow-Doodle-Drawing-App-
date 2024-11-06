@@ -1,9 +1,11 @@
-// ignore_for_file: unused_field, prefer_final_fields
+// ignore_for_file: unused_field, prefer_final_fields, avoid_function_literals_in_foreach_calls
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:inkflow/auth/wrapper.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:inkflow/read_data/get_user_name.dart';
 
 class Gharpage extends StatefulWidget {
   const Gharpage({super.key});
@@ -13,6 +15,20 @@ class Gharpage extends StatefulWidget {
 }
 
 class _GharpageState extends State<Gharpage> {
+  //Document Ids
+  List<String> documentIds = [];
+
+  //getting document Ids
+  Future getUserId() async {
+    documentIds.clear();
+    await FirebaseFirestore.instance
+        .collection('Users')
+        .get()
+        .then((snapshots) => snapshots.docs.forEach((userDocuments) {
+              documentIds.add(userDocuments.reference.id);
+            }));
+  }
+
   bool _isclicked = false;
   final User? user = FirebaseAuth.instance.currentUser;
   signout() async {
@@ -29,30 +45,32 @@ class _GharpageState extends State<Gharpage> {
       appBar: AppBar(
         title: Text('Homepage'),
       ),
-      body: Column(
-        children: [
-          Center(
-            child: user != null
-                ? Text('Welcome, ${user!.email}')
-                : Text('No user information available.'),
-          ),
-          SizedBox(
-            height: 80,
-          ),
-          ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  _isclicked = !_isclicked;
-                });
-              },
-              child: Icon(Icons.swap_calls)),
-          SvgPicture.asset(
-            _isclicked ? 'assets/images/google.svg' : 'assets/images/brush.svg',
-            width: 80,
-            height: 80,
-            fit: BoxFit.scaleDown,
-          )
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: user != null
+                  ? Text('Welcome, ${user!.email}')
+                  : Text('No user information available.'),
+            ),
+            Expanded(
+              child: FutureBuilder(
+                future: documentIds.isEmpty ? getUserId() : null,
+                builder: (context, snapshot) {
+                  return ListView.builder(
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: GetUserName(documentId: documentIds[index]),
+                      );
+                    },
+                    itemCount: documentIds.length,
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: signout,
