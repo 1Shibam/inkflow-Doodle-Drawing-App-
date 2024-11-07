@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:inkflow/auth/wrapper.dart';
+import 'package:inkflow/methods/mydrawer.dart';
 
 class Gharpage extends StatefulWidget {
   const Gharpage({super.key});
@@ -42,7 +43,10 @@ class _GharpageState extends State<Gharpage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Homepage'),
+        backgroundColor: Colors.white,
       ),
+      backgroundColor: Colors.white,
+      drawer: Mydrawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -54,10 +58,6 @@ class _GharpageState extends State<Gharpage> {
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: signout,
-        child: const Icon(Icons.logout),
       ),
     );
   }

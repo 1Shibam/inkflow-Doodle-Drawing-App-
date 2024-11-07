@@ -8,6 +8,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:inkflow/auth/wrapper.dart';
 import 'package:inkflow/methods/snackbar.dart';
+import 'package:inkflow/services/auth_service.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -280,7 +281,9 @@ class _SignupPageState extends State<SignupPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          authService().signInWithGoogle();
+                        },
                         icon: SvgPicture.asset('assets/images/google.svg'))
                   ],
                 ),

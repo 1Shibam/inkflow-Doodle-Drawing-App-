@@ -4,6 +4,7 @@ import 'dart:ffi';
 import 'dart:ui';
 import 'package:flutter/rendering.dart';
 import 'package:inkflow/pages/gharpage.dart';
+import 'package:inkflow/services/auth_service.dart';
 
 import '../methods/loader.dart';
 
@@ -331,7 +332,9 @@ class _LoginState extends State<Login> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      authService().signInWithGoogle();
+                                    },
                                     icon: SvgPicture.asset(
                                         'assets/images/google.svg'))
                               ],
