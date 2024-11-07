@@ -8,13 +8,22 @@ class AboutPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back_ios_new,
+              color: Colors.white,
+            )),
+        backgroundColor: Colors.blue,
+        title: const Text(
           "About Inkflow",
           style: TextStyle(
               fontFamily: 'Technoma',
               fontSize: 32,
-              fontWeight: FontWeight.bold),
+              fontWeight: FontWeight.bold,
+              color: Colors.white),
         ),
       ),
       body: Padding(
@@ -23,15 +32,15 @@ class AboutPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 "Welcome to Inkflow!",
                 style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Technoma'),
               ),
-              SizedBox(height: 10),
-              Text(
+              const SizedBox(height: 10),
+              const Text(
                 "Unleash your creativity with Inkflow, the app designed for doodlers, "
                 "artists, and anyone who enjoys expressing themselves visually. "
                 "Whether you’re looking to sketch a quick idea, pass time with creative "
@@ -39,31 +48,31 @@ class AboutPage extends StatelessWidget {
                 "your thoughts in visual form.",
                 style: TextStyle(fontSize: 18, fontFamily: 'Technoma'),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 "Why I Created Inkflow",
                 style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Technoma'),
               ),
-              SizedBox(height: 10),
-              Text(
+              const SizedBox(height: 10),
+              const Text(
                 "Inkflow is more than just an app—it’s a project close to my heart. "
                 "Developed as a way to learn and explore Flutter, Inkflow represents "
                 "my journey into app development. I’ve poured my passion into this app, "
                 "and I hope you enjoy using it as much as I enjoyed building it.",
                 style: TextStyle(fontSize: 18, fontFamily: 'Technoma'),
               ),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 "Key Features",
                 style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Technoma'),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               _buildFeature(Icons.brush, "Intuitive Drawing Tools",
                   "Easily accessible brushes, colors, and other tools for flexible sketching."),
               _buildFeature(Icons.aspect_ratio, "Customizable Canvas",
@@ -72,32 +81,32 @@ class AboutPage extends StatelessWidget {
                   "Experiment freely with the ability to undo or redo changes."),
               _buildFeature(Icons.save, "Save & Share",
                   "Save your creations and share them with friends or on social media."),
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 "Made with Flutter",
                 style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'Technoma'),
               ),
-              SizedBox(height: 10),
-              Text(
+              const SizedBox(height: 10),
+              const Text(
                 "Inkflow was built using Flutter, a powerful toolkit for creating "
                 "beautiful and fast mobile applications. This project allowed me to dive "
                 "deep into Flutter concepts while crafting an app to bring a little "
                 "creativity into users’ lives.",
                 style: TextStyle(fontSize: 18, fontFamily: 'Technoma'),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               Align(
                   alignment: Alignment.center,
                   child: Image.asset('assets/images/Running heart.gif')),
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Center(
                 child: Text(
                   "Thank you for being a part of this journey!",
@@ -123,22 +132,22 @@ class AboutPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(icon, size: 28, color: Colors.blueAccent),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'Technoma'),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Text(
                   description,
-                  style: TextStyle(fontSize: 18, fontFamily: 'Technoma'),
+                  style: const TextStyle(fontSize: 18, fontFamily: 'Technoma'),
                 ),
               ],
             ),

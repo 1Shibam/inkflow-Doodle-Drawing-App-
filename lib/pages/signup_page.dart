@@ -281,8 +281,11 @@ class _SignupPageState extends State<SignupPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     IconButton(
-                        onPressed: () {
+                        onPressed: () async {
                           authService().signInWithGoogle();
+
+                          Image.asset('assets/images/loaderAnimation.gif');
+                          Navigator.pop(context);
                         },
                         icon: SvgPicture.asset('assets/images/google.svg'))
                   ],

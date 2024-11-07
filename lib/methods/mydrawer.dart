@@ -22,6 +22,52 @@ class _MydrawerState extends State<Mydrawer> {
     );
   }
 
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.blue,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+          title: Text(
+            "Confirm Logout",
+            style: TextStyle(
+                fontFamily: 'Technoma',
+                fontWeight: FontWeight.normal,
+                color: Colors.white,
+                fontSize: 28),
+          ),
+          content: Text(
+            "Are you sure you want to log out?",
+            style: TextStyle(
+                fontFamily: 'Technoma', color: Colors.white, fontSize: 20),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: Text(
+                "Not Now",
+                style: TextStyle(fontFamily: 'Technoma', color: Colors.white),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                signout(); // Call the sign-out method
+              },
+              child: Text(
+                "Yes",
+                style: TextStyle(fontFamily: 'Technoma', color: Colors.white),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -53,18 +99,7 @@ class _MydrawerState extends State<Mydrawer> {
                   context, ProfilePage(), 'assets/images/cat animation.gif');
             },
           ),
-          MyListTile(
-            icon: Icons.logout,
-            text: 'LOGOUT',
-            onTap: () {
-              signout();
-            },
-          ),
-          MyListTile(
-            icon: Icons.settings,
-            text: 'SETTINGS',
-            onTap: () {},
-          ),
+
           MyListTile(
             icon: Icons.info,
             text: 'ABOUT',
@@ -74,11 +109,13 @@ class _MydrawerState extends State<Mydrawer> {
             },
           ),
 
-          //home list title
-
-          //profile list title
-
-          //logout list title
+          MyListTile(
+            icon: Icons.logout,
+            text: 'LOGOUT',
+            onTap: () {
+              _showLogoutDialog(context);
+            },
+          ),
         ],
       ),
     );

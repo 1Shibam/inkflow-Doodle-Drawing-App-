@@ -52,7 +52,7 @@ class myDialog {
         barrierColor: Colors.white.withOpacity(1));
 
     // Wait for 1 second
-    await Future.delayed(Duration(milliseconds: 1200));
+    await Future.delayed(Duration(milliseconds: 800));
 
     // Close the loader dialog
     Navigator.of(context).pop();

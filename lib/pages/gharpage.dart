@@ -14,6 +14,7 @@ class Gharpage extends StatefulWidget {
 }
 
 class _GharpageState extends State<Gharpage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   //Document Ids
   List<String> documentIds = [];
 
@@ -41,22 +42,32 @@ class _GharpageState extends State<Gharpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
-        title: Text('Homepage'),
-        backgroundColor: Colors.white,
+        leading: IconButton(
+            onPressed: () {
+              _scaffoldKey.currentState?.openDrawer();
+            },
+            icon: Icon(
+              Icons.menu,
+              color: Colors.white,
+            )),
+        title: Text(
+          'Homepage',
+          style: TextStyle(
+              fontFamily: 'Technoma',
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+              color: Colors.white),
+        ),
+        backgroundColor: Colors.blue,
       ),
       backgroundColor: Colors.white,
       drawer: Mydrawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: user != null
-                  ? Text('Welcome, ${user!.email}')
-                  : Text('No user information available.'),
-            ),
-          ],
+          children: const [],
         ),
       ),
     );
