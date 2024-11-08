@@ -15,6 +15,10 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   //user
   final currentUser = FirebaseAuth.instance.currentUser!;
+
+  //all users
+
+  final userCollection = FirebaseFirestore.instance.collection("Users");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,13 +27,13 @@ class _ProfilePageState extends State<ProfilePage> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios,
                 color: Colors.white,
                 size: 24,
               )),
           centerTitle: true,
-          title: Text(
+          title: const Text(
             'Profile',
             style: TextStyle(
                 fontFamily: 'Technoma', fontSize: 28, color: Colors.white),
@@ -48,11 +52,11 @@ class _ProfilePageState extends State<ProfilePage> {
               final userData = snapshot.data!.data() as Map<String, dynamic>;
               return ListView(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Icon(Icons.person, size: 140, color: Colors.blue),
-                  SizedBox(
+                  const Icon(Icons.person, size: 140, color: Colors.blue),
+                  const SizedBox(
                     height: 20,
                   ),
 //username
@@ -60,7 +64,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     alignment: Alignment.center,
                     child: Flexible(
                       child: Container(
-                        padding: EdgeInsets.all(4),
+                        padding: const EdgeInsets.all(4),
                         decoration: ShapeDecoration(
                             color: Colors.blue,
                             shape: RoundedRectangleBorder(
@@ -76,7 +80,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
+                                  const Text(
                                     'User Name',
                                     style: TextStyle(
                                         fontFamily: 'Technoma',
@@ -85,16 +89,16 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ),
                                   IconButton(
                                       onPressed: () {
-                                        editUserName();
+                                        editUserName(context);
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.edit_outlined,
                                         color: Colors.white,
                                         size: 32,
                                       ))
                                 ],
                               ),
-                              Divider(
+                              const Divider(
                                 color: Colors.white,
                                 height: 0,
                                 thickness: 1.2,
@@ -102,7 +106,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                               Text(
                                 userData['username'],
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontFamily: 'Technoma',
                                     fontSize: 20,
                                     color: Colors.white),
@@ -113,7 +117,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   //email
@@ -121,7 +125,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     alignment: Alignment.center,
                     child: Flexible(
                       child: Container(
-                        padding: EdgeInsets.all(4),
+                        padding: const EdgeInsets.all(4),
                         decoration: ShapeDecoration(
                             color: Colors.blue,
                             shape: RoundedRectangleBorder(
@@ -133,10 +137,10 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
+                              const Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
-                                children: const [
+                                children: [
                                   Text(
                                     'Email',
                                     style: TextStyle(
@@ -146,7 +150,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ),
                                 ],
                               ),
-                              Divider(
+                              const Divider(
                                 color: Colors.white,
                                 height: 0,
                                 thickness: 1.2,
@@ -154,7 +158,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                               Text(
                                 maskEmail(currentUser.email!),
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontFamily: 'Technoma',
                                     fontSize: 20,
                                     color: Colors.white),
@@ -165,7 +169,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
 
@@ -174,7 +178,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     alignment: Alignment.center,
                     child: Flexible(
                       child: Container(
-                        padding: EdgeInsets.all(4),
+                        padding: const EdgeInsets.all(4),
                         decoration: ShapeDecoration(
                             color: Colors.blue,
                             shape: RoundedRectangleBorder(
@@ -190,7 +194,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
+                                  const Text(
                                     'Password',
                                     style: TextStyle(
                                         fontFamily: 'Technoma',
@@ -201,17 +205,17 @@ class _ProfilePageState extends State<ProfilePage> {
                                       onPressed: () {
                                         myDialog.myLoader(
                                             context,
-                                            ForgotPasswordPage(),
+                                            const ForgotPasswordPage(),
                                             'assets/images/Rhombus.gif');
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.edit_outlined,
                                         color: Colors.white,
                                         size: 32,
                                       ))
                                 ],
                               ),
-                              Divider(
+                              const Divider(
                                 color: Colors.white,
                                 height: 0,
                                 thickness: 1.2,
@@ -219,7 +223,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                               Text(
                                 '*' * userData["password"].length,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontFamily: 'Technoma',
                                     fontSize: 20,
                                     color: Colors.white),
@@ -249,7 +253,57 @@ class _ProfilePageState extends State<ProfilePage> {
 }
 //change the user name
 
-void editUserName() {}
+Future<void> editUserName(context) async {
+  String newvalue = "";
+  await showDialog(
+    context: context,
+    builder: (context) => AlertDialog(
+      backgroundColor: Colors.blue,
+      title: Text(
+        'Change Username',
+        style: TextStyle(
+            fontFamily: 'Technoma', fontSize: 18, color: Colors.white),
+      ),
+      content: TextField(
+        autofocus: true,
+        style: TextStyle(
+          fontFamily: 'Technoma',
+          fontSize: 16,
+          color: Colors.white,
+        ),
+        decoration: InputDecoration(
+            hintText: 'Enter new Username',
+            hintStyle: TextStyle(color: Colors.grey)),
+        onChanged: (value) {
+          newvalue = value;
+        },
+      ),
+      actions: [
+        TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(newvalue);
+            },
+            child: Text(
+              'Cancel',
+              style: TextStyle(
+                  fontFamily: 'Technoma', fontSize: 12, color: Colors.white),
+            )),
+        TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text(
+              'Save',
+              style: TextStyle(
+                  fontFamily: 'Technoma', fontSize: 12, color: Colors.white),
+            ))
+      ],
+    ),
+  );
+}
+//updating the name in firestore
+
+//updating the name in firestore
 
 //method for masking the user email
 String maskEmail(String email) {
