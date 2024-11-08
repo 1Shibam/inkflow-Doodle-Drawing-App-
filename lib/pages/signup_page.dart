@@ -40,10 +40,22 @@ class _SignupPageState extends State<SignupPage> {
   Future signup() async {
     if (passConfirmation()) {
       //Create User
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: myEmail.text.trim(), password: myPassword.text.trim());
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: myEmail.text.trim(), password: myPassword.text.trim());
+      //after creating the user, create a new document in cloud firestore name Users
+      FirebaseFirestore.instance
+          .collection("Users")
+          .doc(userCredential.user!.email!)
+          .set({
+        "username": yourName.text,
+        "age": int.parse(yourAge.text),
+        "email": myEmail.text,
+        "password": myPassword.text
+      });
       Get.offAll(Wrapper());
     }
+
     //Add User Details
     addUserDetails(
         yourName.text.trim(), int.parse(yourAge.text.trim()), myEmail.text);
