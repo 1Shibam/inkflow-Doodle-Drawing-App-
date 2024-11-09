@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:inkflow/auth/wrapper.dart';
 import 'package:inkflow/methods/mydrawer.dart';
 
-class Gharpage extends StatefulWidget {
-  const Gharpage({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<Gharpage> createState() => _GharpageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _GharpageState extends State<Gharpage> {
+class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   //Document Ids
   List<String> documentIds = [];

@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:inkflow/pages/gharpage.dart';
+import 'package:inkflow/pages/home_screen.dart';
 import 'package:inkflow/pages/login.dart';
+import 'package:inkflow/pages/verification_screen.dart';
 
 class Wrapper extends StatefulWidget {
   const Wrapper({super.key});
@@ -18,7 +19,10 @@ class _WrapperState extends State<Wrapper> {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Gharpage();
+              if (snapshot.data?.emailVerified == true) {
+                return HomeScreen();
+              }
+              return EmailVerificationPage();
             } else {
               return Login();
             }

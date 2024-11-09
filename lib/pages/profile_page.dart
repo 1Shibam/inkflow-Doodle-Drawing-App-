@@ -15,10 +15,6 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   //user
   final currentUser = FirebaseAuth.instance.currentUser!;
-
-  //all users
-
-  final userCollection = FirebaseFirestore.instance.collection("Users");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,57 +58,54 @@ class _ProfilePageState extends State<ProfilePage> {
 //username
                   Align(
                     alignment: Alignment.center,
-                    child: Flexible(
-                      child: Container(
-                        padding: const EdgeInsets.all(4),
-                        decoration: ShapeDecoration(
-                            color: Colors.blue,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
-                            )),
-                        width: 380,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Text(
-                                    'User Name',
-                                    style: TextStyle(
-                                        fontFamily: 'Technoma',
-                                        fontSize: 18,
-                                        color: Colors.white),
-                                  ),
-                                  IconButton(
-                                      onPressed: () {
-                                        editUserName(context);
-                                      },
-                                      icon: const Icon(
-                                        Icons.edit_outlined,
-                                        color: Colors.white,
-                                        size: 32,
-                                      ))
-                                ],
-                              ),
-                              const Divider(
-                                color: Colors.white,
-                                height: 0,
-                                thickness: 1.2,
-                                endIndent: 96,
-                              ),
-                              Text(
-                                userData['username'],
-                                style: const TextStyle(
-                                    fontFamily: 'Technoma',
-                                    fontSize: 20,
-                                    color: Colors.white),
-                              ),
-                            ],
-                          ),
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: ShapeDecoration(
+                          color: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4),
+                          )),
+                      width: 380,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text(
+                                  'User Name',
+                                  style: TextStyle(
+                                      fontFamily: 'Technoma',
+                                      fontSize: 18,
+                                      color: Colors.white),
+                                ),
+                                IconButton(
+                                    onPressed: () {
+                                      editUserName(context);
+                                    },
+                                    icon: const Icon(
+                                      Icons.edit_outlined,
+                                      color: Colors.white,
+                                      size: 32,
+                                    ))
+                              ],
+                            ),
+                            const Divider(
+                              color: Colors.white,
+                              height: 0,
+                              thickness: 1.2,
+                              endIndent: 96,
+                            ),
+                            Text(
+                              userData['username'],
+                              style: const TextStyle(
+                                  fontFamily: 'Technoma',
+                                  fontSize: 20,
+                                  color: Colors.white),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -123,48 +116,45 @@ class _ProfilePageState extends State<ProfilePage> {
                   //email
                   Align(
                     alignment: Alignment.center,
-                    child: Flexible(
-                      child: Container(
-                        padding: const EdgeInsets.all(4),
-                        decoration: ShapeDecoration(
-                            color: Colors.blue,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
-                            )),
-                        width: 380,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    'Email',
-                                    style: TextStyle(
-                                        fontFamily: 'Technoma',
-                                        fontSize: 18,
-                                        color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                              const Divider(
-                                color: Colors.white,
-                                height: 0,
-                                thickness: 1.2,
-                                endIndent: 96,
-                              ),
-                              Text(
-                                maskEmail(currentUser.email!),
-                                style: const TextStyle(
-                                    fontFamily: 'Technoma',
-                                    fontSize: 20,
-                                    color: Colors.white),
-                              ),
-                            ],
-                          ),
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: ShapeDecoration(
+                          color: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4),
+                          )),
+                      width: 380,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Email',
+                                  style: TextStyle(
+                                      fontFamily: 'Technoma',
+                                      fontSize: 18,
+                                      color: Colors.white),
+                                ),
+                              ],
+                            ),
+                            const Divider(
+                              color: Colors.white,
+                              height: 0,
+                              thickness: 1.2,
+                              endIndent: 96,
+                            ),
+                            Text(
+                              maskEmail(currentUser.email!),
+                              style: const TextStyle(
+                                  fontFamily: 'Technoma',
+                                  fontSize: 20,
+                                  color: Colors.white),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -176,60 +166,57 @@ class _ProfilePageState extends State<ProfilePage> {
                   //Pawword
                   Align(
                     alignment: Alignment.center,
-                    child: Flexible(
-                      child: Container(
-                        padding: const EdgeInsets.all(4),
-                        decoration: ShapeDecoration(
-                            color: Colors.blue,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
-                            )),
-                        width: 380,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Text(
-                                    'Password',
-                                    style: TextStyle(
-                                        fontFamily: 'Technoma',
-                                        fontSize: 18,
-                                        color: Colors.white),
-                                  ),
-                                  IconButton(
-                                      onPressed: () {
-                                        myDialog.myLoader(
-                                            context,
-                                            const ForgotPasswordPage(),
-                                            'assets/images/Rhombus.gif');
-                                      },
-                                      icon: const Icon(
-                                        Icons.edit_outlined,
-                                        color: Colors.white,
-                                        size: 32,
-                                      ))
-                                ],
-                              ),
-                              const Divider(
-                                color: Colors.white,
-                                height: 0,
-                                thickness: 1.2,
-                                endIndent: 96,
-                              ),
-                              Text(
-                                '*' * userData["password"].length,
-                                style: const TextStyle(
-                                    fontFamily: 'Technoma',
-                                    fontSize: 20,
-                                    color: Colors.white),
-                              ),
-                            ],
-                          ),
+                    child: Container(
+                      padding: const EdgeInsets.all(4),
+                      decoration: ShapeDecoration(
+                          color: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(4),
+                          )),
+                      width: 380,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text(
+                                  'Password',
+                                  style: TextStyle(
+                                      fontFamily: 'Technoma',
+                                      fontSize: 18,
+                                      color: Colors.white),
+                                ),
+                                IconButton(
+                                    onPressed: () {
+                                      myDialog.myLoader(
+                                          context,
+                                          const ForgotPasswordPage(),
+                                          'assets/images/Rhombus.gif');
+                                    },
+                                    icon: const Icon(
+                                      Icons.edit_outlined,
+                                      color: Colors.white,
+                                      size: 32,
+                                    ))
+                              ],
+                            ),
+                            const Divider(
+                              color: Colors.white,
+                              height: 0,
+                              thickness: 1.2,
+                              endIndent: 96,
+                            ),
+                            Text(
+                              '*' * userData["password"].length,
+                              style: const TextStyle(
+                                  fontFamily: 'Technoma',
+                                  fontSize: 20,
+                                  color: Colors.white),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -301,9 +288,6 @@ Future<void> editUserName(context) async {
     ),
   );
 }
-//updating the name in firestore
-
-//updating the name in firestore
 
 //method for masking the user email
 String maskEmail(String email) {
