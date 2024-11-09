@@ -47,6 +47,13 @@ dependencies:
   firebase_core: ^3.6.0
   shared_preferences: ^2.3.3
   
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  flutter_colorpicker: ^1.1.0
+  flutter_signature_pad: ^3.0.1
+
+  
+  
   
 
 dev_dependencies:
