@@ -6,7 +6,7 @@ class Doodle {
   final int? id;
   final String title;
   final DateTime createdAt;
-  final String drawingData; // JSON string of drawing paths
+  late final String drawingData; // JSON string of drawing paths
 
   Doodle({
     this.id,
