@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:inkflow/drawing_part/doodle_list_screen.dart';
+
 import 'package:inkflow/methods/mydrawer.dart';
+import 'package:inkflow/pages/drawing_canvas.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Colors.white,
             )),
         title: Text(
-          'Homepage',
+          'InkFloww',
           style: TextStyle(
               fontFamily: 'Technoma', fontSize: 32, color: Colors.white),
         ),
@@ -37,9 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: Mydrawer(),
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 80),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               // Welcome Text
               Text(
@@ -52,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 24),
+              SizedBox(height: 28),
 
               Text(
                 'Unleash your creativity with Inkflow. Start creating doodles and saving your art today!',
@@ -60,33 +61,33 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontSize: 24, color: Colors.black, fontFamily: 'Technoma'),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 32),
-
-              // Get Started Button
-              ElevatedButton.icon(
-                onPressed: () {
-                  Navigator.pushReplacement(
+              SizedBox(height: 48),
+              GestureDetector(
+                onTap: () {
+                  //navigate to the canvas
+                  Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => DoodleListScreen(),
+                        builder: (context) => DrawingPage(),
                       ));
                 },
-                icon: Icon(Icons.arrow_forward, color: Colors.white),
-                label: Text(
-                  'Get Started',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontFamily: 'Technoma',
-                      color: Colors.white),
-                ),
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-                  backgroundColor: Colors.blueAccent,
+                child: ListTile(
+                  tileColor: Colors.blue,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(8)),
+                  title: Center(
+                    child: const Text(
+                      'Create new Doodle',
+                      style: TextStyle(
+                          fontFamily: 'Technoma',
+                          fontSize: 24,
+                          color: Colors.white),
+                    ),
                   ),
                 ),
-              ),
+              )
+
+              // Get Started Button
             ],
           ),
         ),
