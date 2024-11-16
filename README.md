@@ -3,7 +3,6 @@
 drawing app in which i added firebase authentication for user signup in this app user can create drawing and save them locally
 
 #sample images of app
-<img src="https://github.com/user-attachments/assets/92e8ff10-dfee-482d-aafa-c8489bbc0307" alt="Post 1" width="300" /> 
 <img src="https://github.com/user-attachments/assets/b397b8d2-4d1d-4291-a2c5-a333b97e99c7" alt="Post 1" width="300" /> 
 <img src="https://github.com/user-attachments/assets/e8720322-1c49-4fcb-8163-fd5c2e62c868" alt="Post 1" width="300" /> 
 <img src="https://github.com/user-attachments/assets/32fe7212-9f29-4b3e-b735-ccf4d616d7a8" alt="Post 1" width="300" />
