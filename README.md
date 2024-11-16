@@ -1,6 +1,9 @@
 # inkflow
 
-A new Flutter project.
+drawing app in which i added firebase authentication for user signup in this app user can create drawing and save them locally
+
+#sample images of app
+
 
 ## Getting Started
 
